@@ -1,0 +1,2 @@
+Se agregan funciones axiliares para poder usar lock transverse
+Se agrega funcion para testeo de lubricacion
