@@ -10,17 +10,23 @@ using System;
 using System.Windows.Forms;
 using Models;
 using System.Drawing;
+using System.Security.Cryptography;
 
 namespace InterfaceOneStation
 {
     public partial class MainForm : Form
     {
+        CustomMessageBox customMessageBox = new CustomMessageBox();
         //INSTANCIA CUTTING SYSTEM
         private CuttingSystem SistemaCorte;
         //VARIABLES SISTEMA DE LUBRICACION
         private bool LubricationSystemEnable;
         private int LubricationInterval;
         public int LubricationActive;
+        private int tiempoLubricacion;
+        private int tiempoFuncionamiento;
+        private int tiempoOperacion;
+        private int timepoCorte;
         private int seconds;
         private int minuts;
         private int hours;
@@ -42,6 +48,10 @@ namespace InterfaceOneStation
             //LUBRICATION CONTROL SYSTEM
             //UpdateValues();
             //CheckLubricationSystem();
+            tiempoLubricacion = 0;
+            tiempoFuncionamiento = 0;
+            tiempoOperacion = 0;
+            timepoCorte = 0;
             BanderaBoxLS = false;
             seconds = 0;
             minuts = 0;
@@ -60,6 +70,7 @@ namespace InterfaceOneStation
             timer3.Interval = 1000;
             timer3.Enabled = false;
             timer3.Tick += new EventHandler(timer3_Tick);
+            
             //LS SYSTEM START
             UpdateValues();
             CheckLubricationSystem();
@@ -83,7 +94,7 @@ namespace InterfaceOneStation
             }
             catch (Exception ex)
             {
-                CustomMessageBox customMessageBox = new CustomMessageBox("Falló conexion con Phoenix!", Color.Red);
+                customMessageBox.set_color_texto("Falló conexion con Phoenix!", Color.Red);
                 customMessageBox.ShowDialog();
             }
         }
@@ -149,12 +160,13 @@ namespace InterfaceOneStation
         }
         private void CncVariableEx(string ex, InputFunction f)
         {
-            CustomMessageBox customMessageBox = new CustomMessageBox((ex) + "\nDar de alta la funcion: " + f.ToString(), Color.Red);
+            customMessageBox.set_color_texto((ex) + "\nDar de alta la funcion: " + f.ToString() + " y reinicia la interfaz", Color.Red);
             customMessageBox.ShowDialog();
+            
         }
         private void CncVariableExOut(string ex, OutputFunction f)
         {
-            CustomMessageBox customMessageBox = new CustomMessageBox((ex) + "\nDar de alta la funcion: " + f.ToString(), Color.Red);
+            customMessageBox.set_color_texto((ex) + "\nDar de alta la funcion: " + f.ToString() + " y reinicia la interfaz", Color.Red);
             customMessageBox.ShowDialog();
         }
         #endregion
@@ -198,17 +210,7 @@ namespace InterfaceOneStation
             labelMaster2.Text = "Parked";
         }
         //TORCH 4 CONTROLS
-        private void pictureBoxClamp2_Click(object sender, EventArgs e)
-        {
-            pictureBoxClamp2.Visible = false;
-            pictureBoxUnclamp2.Visible = true;
-            labelMaster2Clamp.Text = "Unclamped";
-            TurnCncFunctionTrue(InputFunction.Aux_Function_Select_3);
-        }
-        private void pictureBoxUnclamp2_Click(object sender, EventArgs e)
-        {
-            torch4Clamped();
-        }
+        
         #endregion
         #region //PARK & CLAMPS METHODS
         private void torch1Clamped()
@@ -235,13 +237,7 @@ namespace InterfaceOneStation
             labelMaster2.Text = "Free";
         }
 
-        private void torch4Clamped()
-        {
-            pictureBoxClamp2.Visible = true;
-            pictureBoxUnclamp2.Visible = false;
-            labelMaster2Clamp.Text = "Clamped";
-            TurnCncFunctionFalse(InputFunction.Aux_Function_Select_3);
-        }
+        
         #endregion
         #region //LUBRICATION CONTROLS        
         private void DisableControls()
@@ -384,6 +380,7 @@ namespace InterfaceOneStation
             radioButtonLSAactive.Checked = true;
             //CUENTA LOS SEGUNDOS
             seconds = seconds + 1;
+            tiempoLubricacion++;
             labelTime.Text = seconds.ToString();
             //TERMINA LA LUBRICACION AL TRANSCURRIR EL TIEMPO DEFINIDO
                 if (seconds >= LubricationActive)
@@ -471,8 +468,9 @@ namespace InterfaceOneStation
                 if (BanderaBoxBW == false)
                 {
                     BanderaBoxBW = true;
-                    CustomMessageBox customMessageBox = new CustomMessageBox("Torch Collision, Revisa estado del Breakaway!", Color.Red);
+                    customMessageBox.set_color_texto("Torch Collision, Revisa estado del Breakaway!", Color.Red);
                     customMessageBox.ShowDialog();
+                    
                     //Check the result after the form is closed
                     if (customMessageBox.CustomDialogResult == DialogResult.OK)
                     {
@@ -488,7 +486,7 @@ namespace InterfaceOneStation
                 {
                     BanderaBoxPS = true;
                     TurnCncFunctionTrue(InputFunction.Fast_Stop);
-                    CustomMessageBox customMessageBox = new CustomMessageBox("Low Air Pressure\nFast Stop Activado\n¡Revisa estado del Suministro!", Color.Red);
+                    customMessageBox.set_color_texto("Low Air Pressure\nFast Stop Activado\n¡Revisa estado del Suministro!", Color.Red);
                     customMessageBox.ShowDialog();
                     //Check the result after the form is closed
                     if (customMessageBox.CustomDialogResult == DialogResult.OK)
@@ -505,7 +503,7 @@ namespace InterfaceOneStation
                 torch1Clamped();
                 torch2Free();
                 torch3Free();
-                torch4Clamped();
+                
 
                 groupBox1.Enabled = false;
 
@@ -527,6 +525,23 @@ namespace InterfaceOneStation
             {
                 EnableButtons();
             }
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            tiempoFuncionamiento++;
+            if (CheckCncOutputState(OutputFunction.Motion_Output))
+            {
+                tiempoOperacion++;
+            }
+            if (CheckCncOutputState(OutputFunction.Cut_Control))
+            {
+                timepoCorte++;
+            }
+            Etiqueta1Funcionamiento.Text = TimeSpan.FromSeconds(tiempoFuncionamiento).ToString();
+            EtiquetaMovimiento.Text = TimeSpan.FromSeconds(tiempoOperacion).ToString();
+            EtiquetaLubricacion.Text = TimeSpan.FromSeconds(tiempoLubricacion).ToString();//Octiene el tiempo de lubricacion desde el form de lubricasion
+            EtiquetaCorte.Text = TimeSpan.FromSeconds(timepoCorte).ToString();
         }
     }
 }
