@@ -21,6 +21,7 @@ namespace InterfaceOneStation
         private bool LubricationSystemEnable;
         private int LubricationInterval;
         public int LubricationActive;
+        private int ciclo;
         private int seconds;
         private int minuts;
         private int hours;
@@ -258,6 +259,7 @@ namespace InterfaceOneStation
             checkBoxEnableLubrication.Enabled = true;
             comboBoxLubricationInterval.Enabled = true;
             comboBoxLubricationActive.Enabled = true;
+            ComboBoxCiclos.Enabled = true;
             buttonSave.Enabled = true;
             buttonLSTest.Enabled = true;
             checkBoxEnableLubrication.Enabled = true;
@@ -290,9 +292,11 @@ namespace InterfaceOneStation
                 {
                     xmlDocument.Root.Element("LubricationEnabled")?.Remove(); // Remove existing value, if any
                     xmlDocument.Root.Element("IntervalTime")?.Remove(); // Remove existing value, if any
+                    xmlDocument.Root.Element("Ciclos")?.Remove();
                     xmlDocument.Root.Element("ActivationTime")?.Remove(); // Remove existing value, if any
                     xmlDocument.Root.Add(new XElement("LubricationEnabled", checkBoxEnableLubrication.Checked));
                     xmlDocument.Root.Add(new XElement("IntervalTime", comboBoxLubricationInterval.SelectedIndex));
+                    xmlDocument.Root.Add(new XElement("Ciclos", ComboBoxCiclos.SelectedIndex));
                     xmlDocument.Root.Add(new XElement("ActivationTime", comboBoxLubricationActive.SelectedIndex));
                     xmlDocument.Save(filePath);
                 }
@@ -415,7 +419,8 @@ namespace InterfaceOneStation
                     // Retrieve the value from the XML document
                     XElement myValueElement1 = xmlDocument.Root.Element("LubricationEnabled");
                     XElement myValueElement2 = xmlDocument.Root.Element("IntervalTime");
-                    XElement myValueElement3 = xmlDocument.Root.Element("ActivationTime"); ;
+                    XElement myValueElement3 = xmlDocument.Root.Element("ActivationTime");
+                    XElement myValueElement4 = xmlDocument.Root.Element("Ciclos");
                     // updates enable value
                     if (bool.TryParse(myValueElement1.Value, out LubricationSystemEnable))
                     {
@@ -449,8 +454,20 @@ namespace InterfaceOneStation
                     {
                         LubricationSystemEnable = false;
                     }
-                }
-                else
+					if (myValueElement4 != null)
+					{
+						int clo;
+						clo = Convert.ToInt16(myValueElement4.Value);
+						ciclo= clo;
+						ComboBoxCiclos.SelectedIndex = clo;
+					}
+					else
+					{
+						LubricationSystemEnable = false;
+					}
+
+				}
+				else
                 {
                     LubricationSystemEnable = false;
                 }
@@ -528,5 +545,15 @@ namespace InterfaceOneStation
                 EnableButtons();
             }
         }
-    }
+
+		private void comboBoxLubricationActive_SelectedItemChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label3_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
