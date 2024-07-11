@@ -10,6 +10,7 @@ using System;
 using System.Windows.Forms;
 using Models;
 using System.Drawing;
+using System.Reflection.Emit;
 
 namespace InterfaceOneStation
 {
@@ -21,10 +22,11 @@ namespace InterfaceOneStation
         private bool LubricationSystemEnable;
         private int LubricationInterval;
         public int LubricationActive;
+        private bool lubricasionEncendida;
+        private bool modificacion;
         private int ciclo;
+        private int tiempo;
         private int seconds;
-        private int minuts;
-        private int hours;
         private string filePath;
         private bool BanderaBoxLS;
         XDocument xmlDocument;
@@ -34,6 +36,7 @@ namespace InterfaceOneStation
         private DialogResult r;
         public MainForm()
         {
+            lubricasionEncendida = false;
             //APP SETUP
             InitializeComponent();
             //CONFIG FILE SETUP
@@ -44,11 +47,11 @@ namespace InterfaceOneStation
             //UpdateValues();
             //CheckLubricationSystem();
             BanderaBoxLS = false;
+            tiempo = 0;
             seconds = 0;
-            minuts = 0;
-            hours = 0;
-            //MONITOREO
-            timer1.Interval = 500;
+            modificacion = false;
+			//MONITOREO
+			timer1.Interval = 500;
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Enabled = true;
             BanderaBoxBW = false;
@@ -57,12 +60,10 @@ namespace InterfaceOneStation
             timer2.Interval = 1000;
             timer2.Enabled = false;
             timer2.Tick += new EventHandler(timer2_Tick);
-            //TIMER LUBRICATION
-            timer3.Interval = 1000;
-            timer3.Enabled = false;
-            timer3.Tick += new EventHandler(timer3_Tick);
-            //LS SYSTEM START
-            UpdateValues();
+             
+			
+			//LS SYSTEM START
+			UpdateValues();
             CheckLubricationSystem();
             BanderaBoxLS = false;
         }
@@ -253,6 +254,7 @@ namespace InterfaceOneStation
             buttonSave.Enabled = false;
             buttonLSTest.Enabled = false;
             checkBoxEnableLubrication.Enabled = false;
+            ComboBoxCiclos.Enabled = false;
         }
         private void EnableButtons()
         {
@@ -263,12 +265,14 @@ namespace InterfaceOneStation
             buttonSave.Enabled = true;
             buttonLSTest.Enabled = true;
             checkBoxEnableLubrication.Enabled = true;
+            ComboBoxCiclos.Enabled=true;
         }
         private void buttonEnter_Click_1(object sender, EventArgs e)
         {
             if (textBoxPassword.Text == "1396")
             {
                 EnableButtons();
+                modificacion=true;
             }
         }
         private void buttonSave_Click_1(object sender, EventArgs e)
@@ -309,23 +313,26 @@ namespace InterfaceOneStation
             UpdateValues();
             DisableControls();
             CheckLubricationSystem();
-        }
+			modificacion = false;
+		}
         //BOTON TEST MODE
         private void buttonLSTest_Click(object sender, EventArgs e)
         {
+            
             if (buttonLSTest.BackColor != Color.Lime)
             {
+                ciclo=1+ComboBoxCiclos.SelectedIndex;
+                LubricationInterval=(comboBoxLubricationActive.SelectedIndex+1)*5;
+				label3.Text = "Ciclos restantes " + ciclo.ToString();
+				TurnCncFunctionTrue(InputFunction.Aux_Function_Select_1);
+				radioButtonLSAactive.Checked = true;
+				DisableControls();
+                timer4.Enabled = true;
                 timer2.Enabled = false;
                 seconds = 0;
-                minuts = 0;
-                hours = 0;
-                TurnCncFunctionFalse(InputFunction.Aux_Function_Select_1);
-                radioButtonLSAactive.Checked = false;
-                timer3.Enabled = false;
-                BanderaBoxLS = false;
-                UpdateValues();
-                CheckLubricationSystem();
-                buttonLSTest.BackColor = Color.Lime;
+				
+				
+				buttonLSTest.BackColor = Color.Lime;
             }
             else
             {
@@ -352,64 +359,27 @@ namespace InterfaceOneStation
         {
             //CONTADOR INTERVALO
             seconds = seconds + 1;
-            if (seconds == 60)
-            {
-                minuts = minuts + 1;
-                seconds = 0;
-                if (minuts == 60)
-                {
-                    hours = hours + 1;
-                    minuts = 0;
-                }
-            }
-            labelTime.Text = hours.ToString() + ":" + minuts.ToString() + ":" + seconds.ToString();
-
+            labelTime.Text =TimeSpan.FromSeconds(seconds).ToString();
             //SI SE LLEGA AL TIEMPO DE INTERVALO O EL BOTON TEST ESTA ACTIVADO Y YA SE CUMPLIO ELTIEMPO DE CICLO
-            if ((hours >= LubricationInterval) || (seconds >= LubricationActive && buttonLSTest.BackColor == Color.Lime))
+            if (seconds>= ((comboBoxLubricationInterval.SelectedIndex+1)*3600))
             {
+                seconds =-1;
+
+                lubricasionEncendida=false;
+				ciclo = 1 + ComboBoxCiclos.SelectedIndex;
+				LubricationInterval = (comboBoxLubricationActive.SelectedIndex + 1) * 5;
+				label3.Text = "Ciclos restantes " + ciclo.ToString();
+				TurnCncFunctionTrue(InputFunction.Aux_Function_Select_1);
+				radioButtonLSAactive.Checked = true;
+				DisableControls();
+				buttonLSTest.BackColor = Color.Lime;
+                
+                timer4.Enabled = true;
                 timer2.Enabled = false;
-                seconds = 0;
-                minuts = 0;
-                hours = 0;
-                timer3.Enabled = true;
-            }
+			}
         }
 
-        //#3 TIMER LUBRICACION, ACTIVA SEÑALES DE LUBRICACION Y CUENTA TIEMPO DE ACTIVACION
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-            //ENCIENDE BOMBA SOLO SI ESTA DADA DE ALTA LA FUNCION
-            if (BanderaBoxLS == false)
-            {
-                TurnCncFunctionTrue(InputFunction.Aux_Function_Select_1);
-                BanderaBoxLS = true;
-            }
-            //ENCIENDE BOMBA
-            radioButtonLSAactive.Checked = true;
-            //CUENTA LOS SEGUNDOS
-            seconds = seconds + 1;
-            labelTime.Text = seconds.ToString();
-            //TERMINA LA LUBRICACION AL TRANSCURRIR EL TIEMPO DEFINIDO
-                if (seconds >= LubricationActive)
-                {
-                    EndTimerLubrication();
-                }
-        }
-
-        //#4 CIERRE DE CICLO DE LUBRICACION, ACTUALIZA LOS VALORES DE LA CONFIGURACION Y REINICIA EL CICLO
-        private void EndTimerLubrication()
-        {
-            //APAGA BOMBA
-            TurnCncFunctionFalse(InputFunction.Aux_Function_Select_1);
-            radioButtonLSAactive.Checked = false;
-            timer3.Enabled = false;
-            seconds = 0;
-            minuts = 0;
-            hours = 0;
-            BanderaBoxLS = false;
-            UpdateValues();
-            CheckLubricationSystem();
-        }
+       
         private void UpdateValues()
         {
             try
@@ -545,14 +515,48 @@ namespace InterfaceOneStation
                 EnableButtons();
             }
         }
-
-		private void comboBoxLubricationActive_SelectedItemChanged(object sender, EventArgs e)
+		private void timer4_Tick(object sender, EventArgs e)
 		{
+            
+			labelTime.Text = TimeSpan.FromSeconds(tiempo+1).ToString();
+            tiempo++;
+            if (ciclo != 0)
+            {
+                if (LubricationInterval == tiempo && lubricasionEncendida)
+                {
+                    lubricasionEncendida = false;
+                    tiempo = 0;
+                    TurnCncFunctionTrue(InputFunction.Aux_Function_Select_1);
+                    buttonLSTest.BackColor = Color.Lime;
+					radioButtonLSAactive.Checked = true;
+					
 
-		}
+				}
+               if (LubricationInterval == tiempo && !lubricasionEncendida)
+                {
+                    lubricasionEncendida = true;
+                    tiempo = 0;
+                    TurnCncFunctionFalse(InputFunction.Aux_Function_Select_1);
+                    buttonLSTest.BackColor = SystemColors.InactiveBorder;
+					radioButtonLSAactive.Checked = false;
+                    ciclo--;
+					label3.Text = "Ciclos restantes: " + ciclo.ToString();
+                 
+				}
+            }
+            else
+            {
+				label3.Text = "Ciclos";
+                label4.Text = "Tiempo";
+                buttonLSTest.BackColor = SystemColors.InactiveBorder;
+                if(modificacion)
+                    EnableButtons();
+               
+                seconds = 0;
 
-		private void label3_Click(object sender, EventArgs e)
-		{
+                timer2.Enabled = true;
+				timer4.Enabled = false;
+			}
 
 		}
 	}

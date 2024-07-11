@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
   <LubricationEnabled>true</LubricationEnabled>
-  <IntervalTime>7</IntervalTime>
+  <IntervalTime>0</IntervalTime>
   <Ciclos>1</Ciclos>
   <ActivationTime>0</ActivationTime>
 </Root>

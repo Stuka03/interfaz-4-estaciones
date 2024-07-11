@@ -1,28 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\",
+  "WorkspaceRootPath": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|InterfaceOneStation||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|c:\\users\\e-ipc-l_32\\documents\\ingenierias\\r0.8.2 27.02.24\\interfaceonestation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\interfaceonestation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|solutionrelative:interfaceonestation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\interfaceonestation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|c:\\users\\e-ip_l_04\\desktop\\interface de .net\\estaciones\\interfaz-4-estaciones\\interfaceonestation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|solutionrelative:interfaceonestation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\interfaceonestation\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\interfaceonestation\\custommessagebox.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|solutionrelative:interfaceonestation\\custommessagebox.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\interfaceonestation\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|solutionrelative:interfaceonestation\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\interfaceonestation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\interfaceonestation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|solutionrelative:interfaceonestation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{070DA924-8490-4C33-9B55-E8930D668017}|InterfaceOneStation\\InterfaceOneStation.csproj|c:\\users\\e-ipc-l_32\\documents\\ingenierias\\r0.8.2 27.02.24\\interfaceonestation\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,71 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InterfaceOneStation",
-              "DocumentMoniker": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\InterfaceOneStation.csproj",
-              "RelativeDocumentMoniker": "InterfaceOneStation\\InterfaceOneStation.csproj",
-              "ToolTip": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\InterfaceOneStation.csproj",
-              "RelativeToolTip": "InterfaceOneStation\\InterfaceOneStation.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-04T17:42:51.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\MainForm.cs",
               "RelativeDocumentMoniker": "InterfaceOneStation\\MainForm.cs",
-              "ToolTip": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\MainForm.cs",
-              "RelativeToolTip": "InterfaceOneStation\\MainForm.cs",
-              "ViewState": "AQIAACsAAAAAAAAAAAAAAL4BAAAIAAAA",
+              "ToolTip": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\MainForm.cs*",
+              "RelativeToolTip": "InterfaceOneStation\\MainForm.cs*",
+              "ViewState": "AQIAADEAAAAAAAAAAAAUwD4AAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-27T16:30:59.76Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CustomMessageBox.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\CustomMessageBox.Designer.cs",
+              "RelativeDocumentMoniker": "InterfaceOneStation\\CustomMessageBox.Designer.cs",
+              "ToolTip": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\CustomMessageBox.Designer.cs",
+              "RelativeToolTip": "InterfaceOneStation\\CustomMessageBox.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T15:31:32.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "MainForm.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\MainForm.Designer.cs",
               "RelativeDocumentMoniker": "InterfaceOneStation\\MainForm.Designer.cs",
-              "ToolTip": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\MainForm.Designer.cs",
               "RelativeToolTip": "InterfaceOneStation\\MainForm.Designer.cs",
-              "ViewState": "AQIAANEBAAAAAAAAAAAtwN8BAAAAAAAA",
+              "ViewState": "AQIAAFECAAAAAAAAAAArwGECAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T16:31:51.977Z"
+              "WhenOpened": "2024-02-27T16:31:51.977Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\Program.cs",
               "RelativeDocumentMoniker": "InterfaceOneStation\\Program.cs",
-              "ToolTip": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\Program.cs",
+              "ToolTip": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\Program.cs",
               "RelativeToolTip": "InterfaceOneStation\\Program.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T16:15:19.709Z"
+              "WhenOpened": "2024-02-27T16:15:19.709Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\MainForm.cs",
               "RelativeDocumentMoniker": "InterfaceOneStation\\MainForm.cs",
-              "ToolTip": "C:\\Users\\E-IPC-L_32\\Documents\\INGENIERIAS\\r0.8.2 27.02.24\\InterfaceOneStation\\MainForm.cs [Dise\u00F1o]",
-              "RelativeToolTip": "InterfaceOneStation\\MainForm.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\E-IP_L_04\\Desktop\\Interface de .net\\Estaciones\\interfaz-4-estaciones\\InterfaceOneStation\\MainForm.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "InterfaceOneStation\\MainForm.cs [Dise\u00F1o]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T16:15:10.398Z"
+              "WhenOpened": "2024-02-27T16:15:10.398Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

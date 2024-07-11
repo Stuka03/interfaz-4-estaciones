@@ -56,6 +56,8 @@ namespace InterfaceOneStation
 			this.pictureBoxAncla1 = new System.Windows.Forms.PictureBox();
 			this.pictureBoxUnclamp1 = new System.Windows.Forms.PictureBox();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.label4 = new System.Windows.Forms.Label();
+			this.ComboBoxCiclos = new System.Windows.Forms.DomainUpDown();
 			this.buttonLSTest = new System.Windows.Forms.Button();
 			this.radioButtonLSAactive = new System.Windows.Forms.RadioButton();
 			this.label3 = new System.Windows.Forms.Label();
@@ -73,8 +75,7 @@ namespace InterfaceOneStation
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.timer2 = new System.Windows.Forms.Timer(this.components);
 			this.timer3 = new System.Windows.Forms.Timer(this.components);
-			this.ComboBoxCiclos = new System.Windows.Forms.DomainUpDown();
-			this.label4 = new System.Windows.Forms.Label();
+			this.timer4 = new System.Windows.Forms.Timer(this.components);
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -299,13 +300,43 @@ namespace InterfaceOneStation
 			this.tabPage3.Text = "CONFIGURACION";
 			this.tabPage3.Enter += new System.EventHandler(this.buttonEnter_Click_1);
 			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(110, 73);
+			this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(42, 13);
+			this.label4.TabIndex = 19;
+			this.label4.Text = "Tiempo";
+			// 
+			// ComboBoxCiclos
+			// 
+			this.ComboBoxCiclos.Enabled = false;
+			this.ComboBoxCiclos.Items.Add("1");
+			this.ComboBoxCiclos.Items.Add("2");
+			this.ComboBoxCiclos.Items.Add("3");
+			this.ComboBoxCiclos.Items.Add("4");
+			this.ComboBoxCiclos.Items.Add("5");
+			this.ComboBoxCiclos.Items.Add("6");
+			this.ComboBoxCiclos.Items.Add("7");
+			this.ComboBoxCiclos.Items.Add("8");
+			this.ComboBoxCiclos.Items.Add("9");
+			this.ComboBoxCiclos.Items.Add("10");
+			this.ComboBoxCiclos.Location = new System.Drawing.Point(9, 88);
+			this.ComboBoxCiclos.Margin = new System.Windows.Forms.Padding(2);
+			this.ComboBoxCiclos.Name = "ComboBoxCiclos";
+			this.ComboBoxCiclos.Size = new System.Drawing.Size(91, 20);
+			this.ComboBoxCiclos.TabIndex = 18;
+			this.ComboBoxCiclos.Text = "Interaciones";
+			// 
 			// buttonLSTest
 			// 
 			this.buttonLSTest.Enabled = false;
 			this.buttonLSTest.Location = new System.Drawing.Point(226, 80);
 			this.buttonLSTest.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonLSTest.Name = "buttonLSTest";
-			this.buttonLSTest.Size = new System.Drawing.Size(63, 19);
+			this.buttonLSTest.Size = new System.Drawing.Size(71, 28);
 			this.buttonLSTest.TabIndex = 17;
 			this.buttonLSTest.Text = "Test Mode";
 			this.buttonLSTest.UseVisualStyleBackColor = true;
@@ -327,13 +358,12 @@ namespace InterfaceOneStation
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(29, 73);
+			this.label3.Location = new System.Drawing.Point(6, 73);
 			this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(35, 13);
 			this.label3.TabIndex = 11;
 			this.label3.Text = "Ciclos";
-			this.label3.Click += new System.EventHandler(this.label3_Click);
 			// 
 			// label2
 			// 
@@ -382,8 +412,6 @@ namespace InterfaceOneStation
 			// comboBoxLubricationActive
 			// 
 			this.comboBoxLubricationActive.Enabled = false;
-			this.comboBoxLubricationActive.Items.Add("2 s");
-			this.comboBoxLubricationActive.Items.Add("3 s");
 			this.comboBoxLubricationActive.Items.Add("5 s");
 			this.comboBoxLubricationActive.Items.Add("10 s");
 			this.comboBoxLubricationActive.Items.Add("15 s");
@@ -396,7 +424,6 @@ namespace InterfaceOneStation
 			this.comboBoxLubricationActive.Size = new System.Drawing.Size(89, 20);
 			this.comboBoxLubricationActive.TabIndex = 4;
 			this.comboBoxLubricationActive.Text = "Time active";
-			this.comboBoxLubricationActive.SelectedItemChanged += new System.EventHandler(this.comboBoxLubricationActive_SelectedItemChanged);
 			// 
 			// comboBoxLubricationInterval
 			// 
@@ -491,35 +518,10 @@ namespace InterfaceOneStation
 			this.timer3.Enabled = true;
 			this.timer3.Interval = 1000;
 			// 
-			// ComboBoxCiclos
+			// timer4
 			// 
-			this.ComboBoxCiclos.Enabled = false;
-			this.ComboBoxCiclos.Items.Add("1");
-			this.ComboBoxCiclos.Items.Add("2");
-			this.ComboBoxCiclos.Items.Add("3");
-			this.ComboBoxCiclos.Items.Add("4");
-			this.ComboBoxCiclos.Items.Add("5");
-			this.ComboBoxCiclos.Items.Add("6");
-			this.ComboBoxCiclos.Items.Add("7");
-			this.ComboBoxCiclos.Items.Add("8");
-			this.ComboBoxCiclos.Items.Add("9");
-			this.ComboBoxCiclos.Items.Add("10");
-			this.ComboBoxCiclos.Location = new System.Drawing.Point(7, 88);
-			this.ComboBoxCiclos.Margin = new System.Windows.Forms.Padding(2);
-			this.ComboBoxCiclos.Name = "ComboBoxCiclos";
-			this.ComboBoxCiclos.Size = new System.Drawing.Size(91, 20);
-			this.ComboBoxCiclos.TabIndex = 18;
-			this.ComboBoxCiclos.Text = "Interaciones";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(125, 73);
-			this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(58, 13);
-			this.label4.TabIndex = 19;
-			this.label4.Text = "Encendido";
+			this.timer4.Interval = 1000;
+			this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
 			// 
 			// MainForm
 			// 
@@ -605,5 +607,6 @@ namespace InterfaceOneStation
         private System.Windows.Forms.Button buttonLSTest;
 		private System.Windows.Forms.DomainUpDown ComboBoxCiclos;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Timer timer4;
 	}
 }
